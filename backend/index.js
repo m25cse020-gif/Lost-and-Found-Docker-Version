@@ -418,6 +418,31 @@ app.put('/api/admin/approve-item/:id', [auth, admin], async (req, res) => {
   }
 });
 
+// @route   PUT /api/admin/claim-item/:id
+// @desc    Mark an item as "Claimed"
+// @access  Admin Only
+app.put('/api/admin/claim-item/:id', [auth, admin], async (req, res) => {
+  try {
+    // 1. Item ko ID se dhoondho
+    let item = await Item.findById(req.params.id);
+
+    if (!item) {
+      return res.status(404).json({ msg: 'Item not found' });
+    }
+
+    // 2. Uske status ko 'Claimed' set karo
+    item.status = 'Claimed';
+    await item.save();
+
+    // 3. Success ka response bhejo
+    res.json({ msg: 'Item marked as Claimed', item });
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 // ===================================
 //      USER'S OWN REPORTS
 // ===================================
