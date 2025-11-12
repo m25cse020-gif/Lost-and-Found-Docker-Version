@@ -27,7 +27,7 @@ function MyReportsPage() {
 
 
         const response = await axios.get(
-          'http://localhost:5002/api/items/my-reports',
+          '/api/items/my-reports',
           config
         );
 
@@ -68,8 +68,7 @@ function MyReportsPage() {
               )}
 
               <div className="item-card-content">
-                
-                {}
+        
                 <span 
                   className="item-tag" 
                   style={{ 

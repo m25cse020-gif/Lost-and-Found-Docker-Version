@@ -25,7 +25,7 @@ function AdminPanel() {
 
 
       const response = await axios.get(
-        'http://localhost:5002/api/admin/pending-items',
+        '/api/admin/pending-items',
         config
       );
 
@@ -61,7 +61,7 @@ function AdminPanel() {
 
 
       const response = await axios.put(
-        `http://localhost:5002/api/admin/approve-item/${itemId}`,
+        `/api/admin/approve-item/${itemId}`,
         {}, // No data needed in the body
         config
       );
