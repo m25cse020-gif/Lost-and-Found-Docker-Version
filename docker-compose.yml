@@ -1,12 +1,12 @@
 services:
-  # 1. Auth Service
+
   auth-service:
     build: ./auth-service
     env_file: ./.env
     expose:
       - "5001"
 
-  # 2. Item Service
+
   item-service:
     build: ./item-service
     env_file: ./.env
@@ -18,7 +18,7 @@ services:
     environment:
       - AUTH_SERVICE_URL=http://auth-service:5001
 
-  # 3. Frontend Client (NGINX)
+
   client:
     build: ./campus-lost-and-found
     ports:
